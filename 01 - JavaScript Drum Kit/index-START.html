@@ -57,46 +57,7 @@
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
-<script>
-
-const keyElements = document.querySelectorAll('.key');
-const audioElements = document.querySelectorAll('audio');
-const keys = {};
-
-keyElements.forEach(key => {
-  const charCode = Number(key.dataset.key);
-  keys[charCode] = { key };
-});
-
-audioElements.forEach(audio => {
-  const charCode = Number(audio.dataset.key);
-  keys[charCode] = { ...keys[charCode], audio };
-});
-
-const eventToCharCode = (event) => event.key.toUpperCase().charCodeAt();
-
-window.onkeypress = (event) => {
-  const keyCode = eventToCharCode(event);
-  const key = keys[keyCode];
-  
-
-  if (key) {
-    key.key.classList.add('playing');
-    key.audio.currentTime = 0;
-    key.audio.play();
-  }
-};
-
-window.onkeyup = (event) => {
-  const keyCode = eventToCharCode(event);
-  const key = keys[keyCode];
-
-  if (key) {
-    key.key.classList.remove('playing');
-  }
-};
-</script>
-
+<script src="script.js"></script>
 
 </body>
 </html>
